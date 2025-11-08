@@ -1,0 +1,157 @@
+/* ======== RESETEO ======== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: white;
+}
+
+/* ======== NAVBAR ======== */
+header {
+  width: 100%;
+  background: linear-gradient(to right, #1c1c1c, #333);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+}
+
+.logo img {
+  height: 70px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav ul li a:hover {
+  color: #ff3333;
+}
+
+.whatsapp {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: white;
+  font-size: 14px;
+}
+
+.whatsapp a {
+  color: #25d366;
+  font-size: 28px;
+  text-decoration: none;
+}
+
+/* ======== SECCIÓN PRINCIPAL (IMAGEN DE FONDO) ======== */
+.hero {
+  position: relative;
+  height: 80vh;
+  background: url('../img/Mecanico.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  text-align: center;
+  color: white;
+}
+
+.overlay h1 {
+  font-size: 70px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* ======== CAMPOS DE ENTRADA ======== */
+.input-box {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  width: 400px;
+  padding: 12px 15px 12px 40px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  background-color: white;
+  color: #333;
+}
+
+.input-box i {
+  position: absolute;
+  top: 11px;
+  left: 15px;
+  color: black;
+  font-size: 20px;
+}
+
+/* ======== BOTÓN LOGIN ======== */
+.login-btn {
+  display: inline-block;
+  background-color: rgba(75, 50, 130, 0.9);
+  color: white;
+  border: none;
+  padding: 12px 50px;
+  border-radius: 30px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background-color: rgba(120, 90, 200, 1);
+}
+
+/* ======== REDES SOCIALES ======== */
+.social-section {
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 25px 0;
+}
+
+.social a {
+  color: white;
+  font-size: 40px;
+  margin: 0 15px;
+  transition: 0.3s;
+}
+
+.social a:hover {
+  color: #ff3333;
+}
+
+.social-section p {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+/* ======== FOOTER ======== */
+footer {
+  background: #111;
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
