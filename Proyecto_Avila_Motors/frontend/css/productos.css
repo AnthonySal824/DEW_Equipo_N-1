@@ -3,9 +3,11 @@
    ============================================================ */
 
 .productos-container {
+  position: relative; /* para que el video se posicione dentro */
   padding: 40px 0;
-  background-color: #000; /* combina con tu tema oscuro */
   text-align: center;
+  overflow: hidden; /* evita scroll si el video excede */
+  /* color de respaldo si el video no carga */
 }
 
 .titulo-producto {
