@@ -4,21 +4,22 @@
 
 .productos-container {
   position: relative; /* para que el video se posicione dentro */
-  padding: 40px 0;
+  padding: 40px 20px;
   text-align: center;
   overflow: hidden; /* evita scroll si el video excede */
-  /* color de respaldo si el video no carga */
+ 
 }
 
 .titulo-producto {
   font-size: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   font-weight: bold;
   color: #fff;
 }
 
 /* GRID DE PRODUCTOS */
 .productos-grid {
+  display: grid;
   width: 90%;
   margin: auto;
   display: grid;
@@ -167,4 +168,93 @@
 }
 .btn-siguiente:hover {
   background: #444;
+}
+/* ============================
+   RESPONSIVE
+=============================== */
+
+/* Laptops */
+@media (max-width: 992px) {
+  .productos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  .titulo-producto {
+    font-size: 34px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .productos-container {
+    padding: 30px 15px;
+  }
+
+  .productos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .producto-card {
+    padding: 15px;
+  }
+
+  .producto-img {
+    max-width: 170px;
+  }
+
+  .titulo-producto {
+    font-size: 30px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+  .productos-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .producto-card {
+    padding: 14px;
+  }
+
+  .producto-img {
+    max-width: 150px;
+  }
+
+  .titulo-producto {
+    font-size: 26px;
+  }
+}
+
+/* Celulares muy pequeños */
+@media (max-width: 360px) {
+
+  .productos-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .producto-img {
+    max-width: 130px;
+  }
+
+  .producto-card {
+    padding: 12px;
+  }
+
+  .titulo-producto {
+    font-size: 22px;
+  }
+}
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;   /* Se queda atrás del contenido */
 }

@@ -28,7 +28,7 @@ body::before {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.45);
-  z-index: 0;
+  z-index: -1;
   pointer-events: none; /* esto permite interactuar con los elementos encima */
 }
 
@@ -37,7 +37,7 @@ body::before {
   padding: 0 20px;
   margin: auto;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 /* ===== HEADER ===== */
@@ -48,6 +48,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 40px;
+  z-index: 20;
 }
 
 .logo img {
@@ -179,30 +180,81 @@ nav ul li a:hover {
 }
 
 /* ======== FOOTER ======== */
+/* ======== REDES SOCIALES ======== */
+.social-section {
+  background: rgba(0, 0, 0, 0.6); /* negro translúcido */
+  text-align: center;
+  padding: 25px 0;
+
+}
+
+/* ======== FOOTER ======== */
 footer {
-  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.6); /* negro translúcido */
   text-align: center;
   padding: 20px;
   font-size: 13px;
   line-height: 1.6;
+  width: 100%; /* asegura que ocupe toda la barra */
+  position: relative;
+  z-index: 2;
+ border-top: 1px solid rgba(255,255,255,0.1); /* opcional, para separación */
 }
 
 footer a {
-  color: rgb(255, 255, 255);
+  color: white;
   text-decoration: none;
-}
-header, footer {
-    position: relative;
-    z-index: 2;
+  transition: 0.3s;
 }
 
-@media (max-width: 480px) {
+footer a:hover {
+  color: #ff4d4d;
+}
+
+/* ============================
+   RESPONSIVE GENERAL
+=============================== */
+
+
+@media (max-width: 768px) {
 
   header {
-    padding: 10px 0;
+    flex-direction: column; /* mantiene el logo y whatsapp en columna */
+    gap: 12px;
+    padding: 12px 0;
   }
 
+  .logo img {
+    width: 90px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+  }
+
+  /* NAVBAR como fila */
   nav ul {
+    flex-direction: row;   /* fila, no columna */
+    flex-wrap: wrap;       /* permite que los enlaces se ajusten al ancho */
+    justify-content: center; /* centra los enlaces */
+    gap: 14px;             /* separación entre enlaces */
+  }
+
+  nav ul li a {
+    font-size: 14px;
+  }
+
+  .whatsapp {
+    flex-direction: row;
+    gap: 6px;
+    font-size: 13px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+  nav ul {
+    flex-direction: row;  /* fila */
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
   }
 

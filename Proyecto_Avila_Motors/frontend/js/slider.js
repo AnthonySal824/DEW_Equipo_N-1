@@ -63,3 +63,11 @@ document.addEventListener('DOMContentLoaded', function() {
         startAutoSlide(); 
     }
 });
+
+
+const toggleBtn = document.querySelector(".redes-toggle");
+const redes = document.querySelector(".redes-sociales");
+
+toggleBtn.addEventListener("click", () => {
+  redes.classList.toggle("show");
+});

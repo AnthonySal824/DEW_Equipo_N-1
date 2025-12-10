@@ -1,9 +1,9 @@
-/* === ESTILOS GENERALES === */
+/* === ESTILOS GENERALES (basado en tu CSS original, corregido) === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif; 
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -20,38 +20,42 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 40px;
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
+  /* permite medir la altura real desde JS si se aplica */
 }
 
+/* Logo (mantiene tu tamaño original aproximado) */
 .logo img {
-    width: 90px;
-    border-radius: 50%;
-    border: 2px solid #000000;
+  width: 90px;
+  border-radius: 50%;
+  border: 2px solid #000000;
 }
 
+/* Navegación principal (manteniendo gaps pero con unidades fluidas) */
 nav ul {
-    display: flex;
-    gap: 65px;
-    list-style: none;
-    align-items: center;
+  display: flex;
+  gap: clamp(20px, 5vw, 65px); /* adaptativo */
+  list-style: none;
+  align-items: center;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 10px 0;
-    transition: color 0.3s;
+  text-decoration: none;
+  color: white;
+  font-size: clamp(14px, 1.6vw, 18px); /* adaptativo */
+  font-weight: 500;
+  padding: 10px 0;
+  transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: #ff4d4d;
+  color: #ff4d4d;
 }
 
+/* WhatsApp (manteniendo estilo) */
 .whatsapp {
   display: flex;
   flex-direction: column;
@@ -62,102 +66,153 @@ nav ul li a:hover {
 }
 
 .whatsapp span {
-    margin: 0 5px;
+  margin: 0 5px;
 }
 
 .whatsapp a {
   color: #ffffff;
-  font-size: 40px;
+  font-size: clamp(26px, 4vw, 40px);
   text-decoration: none;
 }
 
-/* --- ICONOS LATERALES --- */
-.redes-sociales {
+/* --- ICONOS LATERALES (UNIFICADOS y plegables) --- */
+/* Usamos .redes-sociales-container + .redes-sociales (una sola definición) */
+
+/* === BARRA SOCIAL LATERAL PLEGABLE === */
+.redes-sociales-container {
   position: fixed;
   top: 35%;
-  left: 10px;
+  left: 20px;           /* ✔ separada del borde */
+  z-index: 150;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 10px;
-  z-index: 90;
+}
+
+/* BOTÓN DE PLEGADO — NO ES FACEBOOK */
+.redes-toggle {
+  background-color: #000;
+  color: white;
+  border: 2px solid #444;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  transition: 0.3s;
+}
+
+.redes-toggle:hover {
+  background-color: #222;
+  transform: scale(1.05);
+}
+
+/* ICONOS — BARRA PLEGADA */
+.redes-sociales {
+  display: none; 
+  flex-direction: column;
+
+  gap: 10px;
 }
 
 .redes-sociales a {
   background-color: #000;
   color: white;
-  font-size: 28px;
-  padding: 8px;
+  padding: 10px;
   border-radius: 6px;
+  font-size: 26px;
   transition: 0.3s;
 }
 
 .redes-sociales a:hover {
-  transform: scale(1.1);
   background-color: #f33;
+  transform: scale(1.1);
 }
 
-
+/* Mostrar barra cuando está activa */
+.redes-sociales.show {
+  display: flex;
+}
 /* === SLIDER Y VIDEO === */
-
+/* Se corrige el uso de 100vh; usamos min-height con soporte a dispositivos actuales */
 .slider {
-  height: 100vh;
-  position: relative; 
+  /* calc con header estimado; si aplicas JS este valor se puede actualizar dinámicamente */
+  height: calc(100vh - 80px); /* evita que el header fijo tape el contenido */
+  position: relative;
   overflow: hidden;
-  padding-top: 70px; 
+  padding-top: 70px; /* espacio para el header */
 }
 
+/* Layer oscuro opcional para legibilidad (puedes comentarla si no quieres) */
+.slider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25); /* suave, mantiene tu estética */
+  z-index: 1;
+}
+
+/* Video centrado y responsivo sin deformar */
 .slide-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 100%;
   height: 100%;
-  object-fit: cover; 
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0; 
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  /* evita saltos de renderizado */
+  will-change: transform;
+  /* se puede añadir poster en HTML para mejor LCP */
 }
 
-/* 1. CAMBIO: Contenido del Slide alineado a la izquierda */
+/* Contenedor slide (mantiene alineación a la izquierda como en tu diseño) */
 .slide {
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Alinea a la izquierda */
-  padding-left: 80px;         /* Espaciado del borde */
-  
+  justify-content: flex-start;
+  padding-left: clamp(15px, 8vw, 80px); /* adaptativo, antes fijo en 80px */
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
-  z-index: 0;
+  z-index: 2; /* encima del overlay */
   transition: opacity 0.8s ease-in-out;
 }
 
 .slide.active {
-    opacity: 1;
-    z-index: 1;
+  opacity: 1;
+  z-index: 3;
 }
 
-/* 2. CAMBIO: Contenido con texto centrado dentro de su caja */
-/* Bloque Final de CSS para .contenido y .btn */
+/* Contenido interno: caja semitransparente (igual que tú) */
 .contenido {
-  text-align: left; /* Todo el contenido interno a la izquierda */
-  background-color: rgba(0, 0, 0, 0.4); 
-  padding: 40px;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: clamp(12px, 3.5vw, 40px);
   border-radius: 10px;
-  z-index: 5; 
+  z-index: 5;
+  max-width: min(90%, 700px); /* evita que el bloque crezca demasiado */
 }
 
+/* Título adaptativo: reemplaza font-size fijo por clamp para que no explote */
 .contenido h1 {
-  font-size: 4rem;
+  font-size: clamp(1.6rem, 6vw, 4rem); /* antes 4rem fijo */
   font-weight: 800;
   letter-spacing: 3px;
   margin: 0;
-  text-align: left; /* Asegura que el h1 esté alineado a la izquierda */
+  text-align: left;
+  line-height: 1.05;
 }
 
+/* Botón */
 .btn {
-  /* No necesita text-align, hereda 'left' de .contenido */
   display: inline-block;
   margin-top: 20px;
   padding: 10px 30px;
@@ -166,18 +221,19 @@ nav ul li a:hover {
   text-decoration: none;
   border-radius: 20px;
   transition: 0.3s;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
 }
 
 .btn:hover {
   background-color: #f33;
 }
 
-/* 3. CAMBIO: Dot Navigation a la izquierda inferior */
+/* DOT NAVIGATION (posicionado a la izquierda inferior) */
 .dot-navigation {
-    position: absolute; 
-    bottom: 50px;
-    left: 80px; /* Posicionamiento a la izquierda */
-    z-index: 10;
+  position: absolute;
+  bottom: clamp(20px, 6vw, 50px);
+  left: clamp(15px, 8vw, 80px);
+  z-index: 10;
 }
 
 .dot {
@@ -199,7 +255,7 @@ nav ul li a:hover {
 /* === PIE DE PÁGINA === */
 footer {
   width: 100%;
-  background-color: #1c1c1c; 
+  background-color: #00000048;
   padding: 20px 40px;
   text-align: center;
   font-size: 13px;
@@ -207,72 +263,137 @@ footer {
   opacity: 0.9;
 }
 
-
 /* === AJUSTES RESPONSIVE === */
-@media (max-width: 992px) {
-    header {
-        padding: 10px 20px;
-    }
 
-    nav ul {
-        gap: 30px;
-    }
-    
-    nav ul li a {
-        font-size: 16px;
-    }
-    
-    .whatsapp a {
-        font-size: 30px;
-    }
+/* Desktop -> Tablet */
+@media (max-width: 992px) {
+  header {
+    padding: 10px 20px;
+  }
+
+  nav ul {
+    gap: 30px;
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+
+  .whatsapp a {
+    font-size: 30px;
+  }
+
+  .slider {
+    padding-top: 100px;
+    height: calc(100vh - 100px);
+  }
+
+  .contenido {
+    max-width: 80%;
+  }
 }
 
+/* Tablet -> Mobile */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column; 
-        align-items: center;
-        justify-content: center;
-        padding: 15px 10px;
-    }
+ 
 
-    nav {
-        margin: 10px 0;
-    }
-
-    nav ul {
-        gap: 15px; 
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    .whatsapp span {
-        display: none; 
-    }
-    
-    .whatsapp a {
-        font-size: 25px; 
-    }
-
-    .redes-sociales {
+    /* Contenedor general de redes: pegado a la izquierda */
+    .redes-sociales-container {
         top: auto;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
+        bottom: 20px;
+        left: 10px;          /* ← totalmente a la izquierda */
+        transform: none;     /* ← evitar centrado */
+        display: flex;
         flex-direction: row;
-        background: rgba(0, 0, 0, 0.7); 
-        border-radius: 10px;
-    }
-    
-    .slider {
-        padding-top: 150px; 
+        align-items: center;
+        gap: 8px;
     }
 
-    /* Ajuste para móvil: mover contenido y dots más cerca del borde */
-    .slide {
-        padding-left: 20px; 
+    /* Botón desplegable: pegado al lado izquierdo */
+    .redes-toggle {
+        padding: 10px 12px;
+        font-size: 18px;
+        margin: 0;               /* ← evitar que se centre */
+        align-self: flex-start;  /* ← fuerza alineación a la izquierda */
     }
 
-    .dot-navigation {
-        left: 20px;
+    /* Menú horizontal */
+    .redes-menu {
+        flex-direction: row;
+        margin: 0;
+        transform: translateY(10px);
+        left: auto;
     }
+
+    .redes-menu.active {
+        transform: translateY(0);
+    }
+
+    .redes-menu a {
+        padding: 10px 12px;
+        font-size: 20px;
+    }
+
+header {
+    flex-direction: column; /* mantiene el logo y whatsapp en columna */
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .logo img {
+    width: 90px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+  }
+
+  /* NAVBAR como fila */
+  nav ul {
+    flex-direction: row;   /* fila, no columna */
+    flex-wrap: wrap;       /* permite que los enlaces se ajusten al ancho */
+    justify-content: center; /* centra los enlaces */
+    gap: 14px;             /* separación entre enlaces */
+  }
+
+  nav ul li a {
+    font-size: 14px;
+  }
+
+  .whatsapp {
+    flex-direction: row;
+    gap: 6px;
+    font-size: 13px;
+  }
+}
+  
+
+
+
+
+/* Pequeñas pantallas */
+@media (max-width: 480px) {
+  .slider {
+    padding-top: 95px;
+    height: calc(100vh - 95px);
+  }
+
+  .contenido {
+    padding: 12px;
+  }
+
+  .btn {
+    padding: 8px 20px;
+    font-size: 0.95rem;
+  }
+
+  .dot {
+    height: 10px;
+    width: 10px;
+  }
+}
+
+/* Accesibilidad: foco visible */
+:focus {
+  outline: 3px solid rgba(255,77,77,0.5);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
