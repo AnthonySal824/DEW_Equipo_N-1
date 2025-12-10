@@ -1,0 +1,156 @@
+
+/* ================= RESETEO ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #000;
+  color: #000000;
+}
+
+/* ================= CONTENEDOR PRINCIPAL ================= */
+.servicios-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.servicios-container h1 {
+  font-size: 48px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+/* ================= DISEÑO GENERAL DEL SERVICIO ================= */
+.servicio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* LADO IZQUIERDO — IMAGEN O VIDEO */
+.servicio-media img,
+.servicio-media video {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 3px solid #333;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* LADO DERECHO — TEXTO */
+.servicio-info {
+  max-width: 700px;
+  text-align: left;
+  color: #ffffff;
+}
+
+.servicio-info h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #ff4d4d;
+  background-color:rgba(0, 0, 0, 0.452) ;
+  
+}
+
+
+
+.servicio-info p {
+  font-size: 18px;
+  line-height: 1.6;
+  background-color:rgba(0, 0, 0, 0.452) ;
+  
+}
+
+/* ================= BOTONES DE CONTROL ================= */
+.servicio-controles {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  gap: 25px;
+}
+
+.servicio-controles button {
+  padding: 12px 34px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  background-color: rgba(47, 45, 51, 0.9);
+  color: white;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.servicio-controles button:hover {
+  background-color: rgb(89, 87, 95);
+  transform: scale(1.05);
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .servicio {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .servicio-info {
+    text-align: center;
+  }
+
+  .servicio-media img,
+  .servicio-media video {
+    width: 90%;
+    height: auto;
+  }
+}
+
+/* Celulares */
+@media (max-width: 500px) {
+  .servicios-container h1 {
+    font-size: 34px;
+  }
+
+  .servicio-info h2 {
+    font-size: 28px;
+  }
+
+  .servicio-info p {
+    font-size: 16px;
+  }
+
+  .servicio-controles button {
+    font-size: 16px;
+    padding: 10px 24px;
+  }
+}
+footer p {
+  color: white !important;
+}
+.social-section p {
+  color: white !important;
+}
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none; /* No interfiere con los botones */
+}

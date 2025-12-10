@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ávila Motors</title>
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="css/inicio.css">
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ===========================================================
+         HEADER / MENÚ SUPERIOR
+    =========================================================== -->
+    <header class="navbar">
+
+        <div class="logo">
+            <a href="index.html">
+                <img src="img/Kratos.png" alt="Ávila Motors Logo">
+            </a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="inicio.html" class="active-link">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="servicios1.html">Servicios</a></li>
+                <li><a href="productos1.html">Productos</a></li>
+                <li><a href="contacto.html">Contáctenos</a></li>
+                <li><a href="equipo.html">Equipo</a></li>
+            </ul>
+        </nav>
+
+        <div class="whatsapp">
+            <a href="https://wa.me/950635988" target="_blank" aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <span>Agenda tu cita</span>
+        </div>
+
+    </header>
+
+
+    <!-- ===========================================================
+         REDES SOCIALES PLEGABLES
+    =========================================================== -->
+<div class="redes-sociales-container">
+
+    <!-- Botón menú plegable (ya NO es Facebook) -->
+    <button class="redes-toggle">☰</button>
+
+    <!-- Íconos del menú -->
+    <div class="redes-sociales">
+        <a href="https://www.facebook.com/share/1FY2UwHCfM/"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.tiktok.com/@avilamotors_"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/avilamotorsperu?igsh=aDVmYWh1dXBrdjA3"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+</div>
+
+
+
+    <!-- ===========================================================
+         SLIDER / HERO DE VIDEOS
+    =========================================================== -->
+    <section class="slider">
+        <!-- SLIDE 1 -->
+        <div class="slide active" data-text="Primer Video: Alto rendimiento">
+            <video class="slide-video" autoplay muted loop playsinline src="videos/caballo.mp4"></video>
+
+            <div class="contenido">
+                <h1>BIENVENIDO A<br>ÁVILA MOTORS</h1>
+                <a href="nosotros.html" class="btn">Ver más</a>
+            </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="slide" data-text="Segundo Video: SERVICIO DE MECÁNICA">
+            <video class="slide-video" autoplay muted loop playsinline src="videos/video3.mp4"></video>
+
+
+            <div class="contenido">
+                <h1>SERVICIO DE<br>MECÁNICA DE MOTORES</h1>
+                <a href="servicios1.html" class="btn">Ver Servicio</a>
+            </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="slide" data-text="Afinamiento electrónico">
+            <video class="slide-video" autoplay muted loop playsinline src="videos/video4.mp4"></video>
+
+            <div class="contenido">
+                <h1>SERVICIO DE<br>AFINAMIENTO ELECTRÓNICO</h1>
+                <a href="servicios2.html" class="btn">Ver Servicio</a>
+            </div>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="slide">
+            <video class="slide-video" autoplay muted loop playsinline src="videos/video5.mp4"></video>
+
+            <div class="contenido">
+                <h1>DIAGNÓSTICO<br>ELECTRÓNICO</h1>
+                <a href="servicios3.html" class="btn">Ver Servicio</a>
+            </div>
+        </div>
+
+        <!-- SLIDE 5 -->
+        <div class="slide">
+            <video class="slide-video" autoplay muted loop playsinline src="videos/animacion1.mp4"></video>
+
+            <div class="contenido">
+                <h1>NUESTRO EQUIPO<br>PROFESIONAL</h1>
+                <a href="equipo.html" class="btn">Ver</a>
+            </div>
+        </div>
+
+        <!-- DOTS -->
+        <div class="dot-navigation">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+            <span class="dot" data-index="4"></span>
+        </div>
+
+    </section>
+
+
+    <!-- ===========================================================
+         FOOTER
+    =========================================================== -->
+    <footer>
+            <p>Horario:</p>
+    <p>8:00 AM-5:00 PM</p>
+ <p>contactenos: <a style="color:rgb(255, 255, 255)" href="mailto:avilamotors.taller1@gmail.com">avilamotors.taller1@gmail.com</a></p>
+            Ubicación: URB. Mariscal Cáceres 7 Intermedio Mz lote 4
+        </p>
+        <p>
+            © 2025 Ávila Motors<br>
+            Grupo DEW Equipo N°1
+        </p>
+        
+    </footer>
+
+
+    <!-- ===========================================================
+         SCRIPTS
+    =========================================================== -->
+
+    <!-- Slider -->
+    <script src="js/slider.js"></script>
+     <script src="js/anima.js"></script>
+</body>
+</html>
