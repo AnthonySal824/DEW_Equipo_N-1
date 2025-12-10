@@ -1,59 +1,51 @@
 /* ======== SECCIÓN NUESTRO EQUIPO ======== */
 
 .team-section {
-  padding: 3.125rem 1.25rem;
+  padding: 5rem 1.5rem 6rem;
   background-color: #000;
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* ======== Header del Equipo ======== */
+/* ======== Header - Minimalista y Centrado ======== */
 .team-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2.5rem;
-  padding: 0 1rem;
-  flex-wrap: wrap;
-  gap: 1rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 45rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .team-header h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2.5rem, 7vw, 5rem);
   color: #ff3333;
-  font-weight: 700;
-  margin: 0;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
   text-transform: uppercase;
-  letter-spacing: 0.125rem;
-  flex: 1;
-  text-align: left;
+  letter-spacing: 0.25rem;
+  line-height: 1;
+  text-shadow: 0 0 30px rgba(255, 51, 51, 0.3);
 }
 
-.team-header .subtitle {
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  color: #bbb;
-  font-style: italic;
-  margin: 0;
-  text-align: center;
-  flex: 1;
-}
 
 .team-header h2 {
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  color: #fff;
-  margin: 0;
-  text-decoration: underline;
-  text-decoration-thickness: 0.125rem;
-  text-underline-offset: 0.3125rem;
-  flex: 1;
-  text-align: right;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  color: #555;
+  margin: 2rem 0 0 0;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  opacity: 0.7;
 }
 
-/* ======== Contenedor de Tarjetas ======== */
+/* ======== Grid de Tarjetas ======== */
 .team-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5625rem;
-  max-width: 87.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2.5rem;
+  max-width: 90rem;
   margin: 0 auto;
   padding: 0;
   list-style: none;
@@ -61,133 +53,261 @@
 
 /* ======== Tarjeta Individual ======== */
 .team-card {
-  background: #1c1c1c;
-  border: 0.0625rem solid #333;
-  border-radius: 0.9375rem;
+  background: #0d0d0d;
+  border: 1px solid #1a1a1a;
+  border-radius: 1rem;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  cursor: pointer;
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1rem;
+  padding: 1px;
+  background: linear-gradient(145deg, transparent, #ff3333, transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.team-card:hover::before {
+  opacity: 1;
 }
 
 .team-card:hover {
-  transform: translateY(-0.625rem);
-  border-color: #ff3333;
-  box-shadow: 0 0.625rem 1.25rem rgba(255, 51, 51, 0.2);
+  transform: translateY(-0.75rem) scale(1.02);
+  box-shadow: 0 1.5rem 3rem rgba(255, 51, 51, 0.15),
+              0 0 0 1px rgba(255, 51, 51, 0.1);
 }
 
-/* ======== Imagen ======== */
+/* ======== Imagen  ======== */
 .img-box {
   width: 100%;
-  height: 13.75rem;
+  height: 18rem;
   overflow: hidden;
-  background-color: #222;
+  background: #000;
   margin: 0;
+  position: relative;
+}
+
+.img-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+.team-card:hover .img-box::after {
+  opacity: 0.5;
 }
 
 .img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
-  transition: transform 0.4s ease;
+  object-position: center 20%;
   display: block;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: grayscale(20%) contrast(1.1);
 }
 
 .team-card:hover .img-box img {
   transform: scale(1.1);
+  filter: grayscale(0%) contrast(1.2);
 }
 
-/* ======== Contenido ======== */
+/* ======== Contenido - Espaciado Óptimo ======== */
 .content {
-  padding: 0.9375rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
+  padding: 1.75rem 1.5rem 2rem;
+  background: linear-gradient(to bottom, #0d0d0d 0%, #050505 100%);
+  position: relative;
 }
 
 .content h3 {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: #fff;
   font-weight: 600;
-  border-bottom: 0.125rem solid #ff3333;
-  padding-bottom: 0.3125rem;
-  margin: 0;
+  margin: 0 0 0.875rem 0;
+  line-height: 1.4;
+  letter-spacing: 0.02rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.content h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2rem;
+  height: 0.15rem;
+  background: linear-gradient(90deg, #ff3333, transparent);
+  transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.team-card:hover .content h3 {
+  color: #ff3333;
+}
+
+.team-card:hover .content h3::after {
+  width: 100%;
 }
 
 .content p {
-  font-size: 0.9rem;
-  color: #ccc;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  color: #999;
+  line-height: 1.6;
   margin: 0;
+  transition: color 0.3s ease;
 }
 
-/* ======== Responsividad ======== */
-@media (max-width: 900px) {
-  .team-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.5rem;
-  }
-
-  .team-header h1,
-  .team-header .subtitle,
-  .team-header h2 {
-    text-align: center;
-  }
+.team-card:hover .content p {
+  color: #bbb;
 }
 
-@media (min-width: 769px) and (max-width: 1200px) {
+/* ======== Responsividad Inteligente ======== */
+
+/* Desktop Grande - 5 columnas */
+@media (min-width: 1400px) {
   .team-container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
   }
 }
 
-@media (max-width: 768px) {
+/* Desktop Mediano - 4 columnas */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .team-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Tablet - 3 columnas */
+@media (min-width: 769px) and (max-width: 1023px) {
   .team-section {
-    padding: 2rem 1rem;
+    padding: 3.5rem 1.25rem 4.5rem;
+  }
+
+  .team-header {
+    margin-bottom: 3rem;
   }
 
   .team-container {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
   }
 
   .img-box {
-    height: 12rem;
+    height: 16rem;
   }
 }
 
-@media (max-width: 500px) {
+/* Tablet Pequeño - 2 columnas */
+@media (max-width: 768px) {
   .team-section {
-    padding: 1.5rem 0.75rem;
+    padding: 3rem 1rem 4rem;
   }
 
   .team-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .team-header h1 {
+    letter-spacing: 0.15rem;
+  }
+
+  .team-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .img-box {
+    height: 14rem;
+  }
+
+  .content {
+    padding: 1.25rem 1rem 1.5rem;
+  }
+}
+
+/* Móvil - 1 columna */
+@media (max-width: 520px) {
+  .team-section {
+    padding: 2.5rem 1rem 3rem;
+  }
+
+  .team-header {
+    margin-bottom: 2rem;
+  }
+
+  .team-header h1 {
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .team-header h2 {
+    margin-top: 1.5rem;
+    font-size: 0.7rem;
   }
 
   .team-container {
     grid-template-columns: 1fr;
-    max-width: 18.75rem;
-    gap: 1rem;
+    gap: 1.5rem;
+    max-width: 24rem;
+  }
+
+  .team-card {
+    border-radius: 0.875rem;
   }
 
   .img-box {
-    height: 15rem;
-  }
-
-  .content {
-    padding: 1rem;
+    height: 20rem;
   }
 
   .content h3 {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
 
   .content p {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Animación más sutil en móvil */
+  .team-card:hover {
+    transform: translateY(-0.5rem) scale(1.01);
+  }
+}
+
+/* Móvil Muy Pequeño */
+@media (max-width: 380px) {
+  .team-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .img-box {
+    height: 18rem;
   }
 }
