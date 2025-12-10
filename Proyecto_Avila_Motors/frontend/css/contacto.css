@@ -206,38 +206,41 @@ button:hover {
   background: #000;
 }
 
-/* ===========================
-   FOOTER
-=========================== */
-footer {
-  background: #000;
-  padding: 25px 10px;
-  display: flex;
-  justify-content: space-around;
+/* ======== REDES SOCIALES ======== */
+.social-section {
+  background: rgba(0, 0, 0, 0.8);
   text-align: center;
-  flex-wrap: wrap;
+  padding: 25px 0;
 }
 
-footer h4,
-footer p {
+.social a {
   color: white;
-}
-
-.iconos-finales {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.iconos-finales i {
-  font-size: 25px;
-  color: white;
+  font-size: 40px;
+  margin: 0 15px;
   transition: 0.3s;
 }
 
-.iconos-finales i:hover {
-  color: #ff4d4d;
+.social a:hover {
+  color: #ff3333;
+}
+
+.social-section p {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+/* ======== FOOTER ======== */
+footer {
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
 }
 
 /* ===========================

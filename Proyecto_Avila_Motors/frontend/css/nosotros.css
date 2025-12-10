@@ -48,51 +48,55 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 40px;
-  z-index: 20;
+  flex-wrap: wrap; /* para que en móviles baje correctamente */
 }
 
 .logo img {
-    width: 90px;
-    border-radius: 50%;
-    border: 2px solid #000000;
+  width: 90px;
+  border-radius: 50%;
+  border: 2px solid #000000;
 }
 
 nav ul {
-    display: flex;
-    gap: 65px;
-    list-style: none;
-    align-items: center;
+  display: flex;
+  gap: 65px;           /* mantiene tu separación grande */
+  list-style: none;
+  align-items: center;
+  flex-wrap: wrap;      /* permite que los links bajen si no caben */
+  justify-content: center;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 10px 0;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 0;
+  transition: 0.3s;
 }
 
 nav ul li a:hover {
-    color: #ff4d4d;
+  color: #ff4d4d;
 }
 
 .whatsapp {
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  /* icono arriba, texto abajo */
   align-items: center;
   color: white;
   font-size: 18px;
+  order: 3;                /* para que quede debajo del logo y nav si es necesario */
+  margin-top: 6px;
 }
 
 .whatsapp span {
-    margin: 0 5px;
+  margin: 5px 0 0 0;
 }
 
 .whatsapp a {
   color: #ffffff;
-  font-size: 40px;
+  font-size: 40px;         /* icono grande como quieres */
   text-decoration: none;
-
 }
 
 .hero {
@@ -158,7 +162,7 @@ nav ul li a:hover {
 
 /* ======== REDES SOCIALES ======== */
 .social-section {
-  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.8);
   text-align: center;
   padding: 25px 0;
 }
@@ -179,63 +183,59 @@ nav ul li a:hover {
   font-size: 18px;
 }
 
-/* ======== FOOTER ======== */
-/* ======== REDES SOCIALES ======== */
-.social-section {
-  background: rgba(0, 0, 0, 0.6); /* negro translúcido */
-  text-align: center;
-  padding: 25px 0;
 
-}
+
 
 /* ======== FOOTER ======== */
 footer {
-  background: rgba(0, 0, 0, 0.6); /* negro translúcido */
+  background: rgba(0, 0, 0, 0.8);
   text-align: center;
   padding: 20px;
   font-size: 13px;
   line-height: 1.6;
-  width: 100%; /* asegura que ocupe toda la barra */
-  position: relative;
-  z-index: 2;
- border-top: 1px solid rgba(255,255,255,0.1); /* opcional, para separación */
 }
 
 footer a {
   color: white;
   text-decoration: none;
-  transition: 0.3s;
 }
 
-footer a:hover {
-  color: #ff4d4d;
-}
+
 
 /* ============================
-   RESPONSIVE GENERAL
-=============================== */
+   RESPONSIVE COMPLETO (basado en segundo CSS)
+   ============================ */
 
 
+/* Laptops */
+@media (max-width: 992px) {
+  nav ul {
+    gap: 20px;
+  }
+  nav ul li a {
+    font-size: 15.5px;
+  }
+}
+
+/* Tablets */
 @media (max-width: 768px) {
 
   header {
-    flex-direction: column; /* mantiene el logo y whatsapp en columna */
+    flex-direction: column;
     gap: 12px;
     padding: 12px 0;
   }
 
   .logo img {
-    width: 90px;
+     width: 90px;
     border-radius: 50%;
     border: 2px solid #000000;
   }
 
-  /* NAVBAR como fila */
   nav ul {
-    flex-direction: row;   /* fila, no columna */
-    flex-wrap: wrap;       /* permite que los enlaces se ajusten al ancho */
-    justify-content: center; /* centra los enlaces */
-    gap: 14px;             /* separación entre enlaces */
+    flex-direction: row;
+    flex-wrap: nowrap;    /* NO permite columna */
+    gap: 14px;
   }
 
   nav ul li a {
@@ -251,10 +251,12 @@ footer a:hover {
 
 /* Celulares */
 @media (max-width: 480px) {
+
+  header {
+    padding: 10px 0;
+  }
+
   nav ul {
-    flex-direction: row;  /* fila */
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 10px;
   }
 
@@ -272,5 +274,27 @@ footer a:hover {
   .whatsapp {
     font-size: 11px;
     gap: 4px;
+  }
+}
+
+/* Celulares muy pequeños */
+@media (max-width: 360px) {
+
+  nav ul {
+    gap: 6px;
+  }
+
+  nav ul li a {
+    font-size: 11px;
+  }
+
+  .logo img {
+     width: 90px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+  }
+
+  .whatsapp {
+    font-size: 10px;
   }
 }

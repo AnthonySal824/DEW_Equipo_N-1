@@ -1,9 +1,12 @@
-/* === ESTILOS GENERALES (basado en tu CSS original, corregido) === */
+
+/* ============================
+   ESTILOS GENERALES
+============================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -12,32 +15,28 @@ body {
   overflow-x: hidden;
 }
 
-/* === MENÚ SUPERIOR (HEADER) === */
-header {
+/* ============================
+   HEADER / NAVBAR
+============================ */
+header.navbar {
   width: 100%;
   background: linear-gradient(to right, #1c1c1c, #333);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 40px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  /* permite medir la altura real desde JS si se aplica */
+  z-index: 20;
 }
 
-/* Logo (mantiene tu tamaño original aproximado) */
 .logo img {
   width: 90px;
   border-radius: 50%;
-  border: 2px solid #000000;
+  border: 2px solid #000;
 }
 
-/* Navegación principal (manteniendo gaps pero con unidades fluidas) */
 nav ul {
   display: flex;
-  gap: clamp(20px, 5vw, 65px); /* adaptativo */
+  gap: 65px;
   list-style: none;
   align-items: center;
 }
@@ -45,24 +44,22 @@ nav ul {
 nav ul li a {
   text-decoration: none;
   color: white;
-  font-size: clamp(14px, 1.6vw, 18px); /* adaptativo */
+  font-size: 18px;
   font-weight: 500;
   padding: 10px 0;
-  transition: color 0.3s;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active-link {
   color: #ff4d4d;
 }
 
-/* WhatsApp (manteniendo estilo) */
 .whatsapp {
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
   font-size: 18px;
-  text-align: center;
 }
 
 .whatsapp span {
@@ -70,19 +67,18 @@ nav ul li a:hover {
 }
 
 .whatsapp a {
-  color: #ffffff;
-  font-size: clamp(26px, 4vw, 40px);
+  color: white;
+  font-size: 40px;
   text-decoration: none;
 }
 
-/* --- ICONOS LATERALES (UNIFICADOS y plegables) --- */
-/* Usamos .redes-sociales-container + .redes-sociales (una sola definición) */
-
-/* === BARRA SOCIAL LATERAL PLEGABLE === */
+/* ============================
+   REDES SOCIALES PLEGABLES
+============================ */
 .redes-sociales-container {
   position: fixed;
   top: 35%;
-  left: 20px;           /* ✔ separada del borde */
+  left: 20px;
   z-index: 150;
   display: flex;
   flex-direction: column;
@@ -90,7 +86,6 @@ nav ul li a:hover {
   gap: 10px;
 }
 
-/* BOTÓN DE PLEGADO — NO ES FACEBOOK */
 .redes-toggle {
   background-color: #000;
   color: white;
@@ -100,7 +95,6 @@ nav ul li a:hover {
   cursor: pointer;
   font-size: 24px;
   display: flex;
-  align-items: left;
   justify-content: left;
   transition: 0.3s;
 }
@@ -110,11 +104,9 @@ nav ul li a:hover {
   transform: scale(1.05);
 }
 
-/* ICONOS — BARRA PLEGADA */
 .redes-sociales {
-  display: none; 
+  display: none;
   flex-direction: column;
-
   gap: 10px;
 }
 
@@ -132,30 +124,42 @@ nav ul li a:hover {
   transform: scale(1.1);
 }
 
-/* Mostrar barra cuando está activa */
 .redes-sociales.show {
   display: flex;
 }
-/* === SLIDER Y VIDEO === */
-/* Se corrige el uso de 100vh; usamos min-height con soporte a dispositivos actuales */
+
+/* ============================
+   SLIDER / HERO
+============================ */
 .slider {
-  /* calc con header estimado; si aplicas JS este valor se puede actualizar dinámicamente */
-  height: calc(100vh - 80px); /* evita que el header fijo tape el contenido */
+  min-height: calc(100vh - 80px);
   position: relative;
   overflow: hidden;
-  padding-top: 70px; /* espacio para el header */
+  padding-top: 70px;
 }
 
-/* Layer oscuro opcional para legibilidad (puedes comentarla si no quieres) */
-.slider::after {
-  content: "";
+.slide {
+  height: 100%;
+  width: 100%;
   position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.25); /* suave, mantiene tu estética */
-  z-index: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: clamp(15px, 5vw, 80px);
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 2;
 }
 
-/* Video centrado y responsivo sin deformar */
+.slide.active {
+  opacity: 1;
+  z-index: 3;
+}
+
 .slide-video {
   position: absolute;
   top: 50%;
@@ -165,56 +169,33 @@ nav ul li a:hover {
   object-fit: cover;
   transform: translate(-50%, -50%);
   z-index: 0;
-  /* evita saltos de renderizado */
-  will-change: transform;
-  /* se puede añadir poster en HTML para mejor LCP */
 }
 
-/* Contenedor slide (mantiene alineación a la izquierda como en tu diseño) */
-.slide {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: clamp(15px, 8vw, 80px); /* adaptativo, antes fijo en 80px */
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  z-index: 2; /* encima del overlay */
-  transition: opacity 0.8s ease-in-out;
-}
-
-.slide.active {
-  opacity: 1;
-  z-index: 3;
-}
-
-/* Contenido interno: caja semitransparente (igual que tú) */
 .contenido {
-  text-align: left;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: clamp(12px, 3.5vw, 40px);
-  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.45);
+  padding: clamp(12px, 4vw, 30px);
+  border-radius: 12px;
+  max-width: 90%;
   z-index: 5;
-  max-width: min(90%, 700px); /* evita que el bloque crezca demasiado */
 }
 
-/* Título adaptativo: reemplaza font-size fijo por clamp para que no explote */
 .contenido h1 {
-  font-size: clamp(1.6rem, 6vw, 4rem); /* antes 4rem fijo */
+  font-size: clamp(1.6rem, 6vw, 4rem);
   font-weight: 800;
   letter-spacing: 3px;
-  margin: 0;
-  text-align: left;
+  margin: 0 0 12px 0;
   line-height: 1.05;
 }
 
-/* Botón */
+.contenido p {
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
 .btn {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 10px 30px;
   border: 2px solid #f33;
   color: white;
@@ -228,11 +209,12 @@ nav ul li a:hover {
   background-color: #f33;
 }
 
-/* DOT NAVIGATION (posicionado a la izquierda inferior) */
+/* DOT NAVIGATION */
 .dot-navigation {
   position: absolute;
   bottom: clamp(20px, 6vw, 50px);
-  left: clamp(15px, 8vw, 80px);
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
 }
 
@@ -252,106 +234,46 @@ nav ul li a:hover {
   opacity: 1;
 }
 
-/* === PIE DE PÁGINA === */
+/* ============================
+   FOOTER
+============================ */
 footer {
   width: 100%;
-  background-color: #00000048;
+  background-color: rgba(0,0,0,0.6);
   padding: 20px 40px;
   text-align: center;
   font-size: 13px;
   line-height: 1.4;
-  opacity: 0.9;
+  z-index: 2;
+  position: relative;
 }
 
-/* === AJUSTES RESPONSIVE === */
+/* ============================
+   RESPONSIVE
+============================ */
 
-/* Desktop -> Tablet */
+/* Laptops */
 @media (max-width: 992px) {
-  header {
-    padding: 10px 20px;
-  }
-
   nav ul {
-    gap: 30px;
+    gap: 20px;
   }
-
   nav ul li a {
-    font-size: 16px;
-  }
-
-  .whatsapp a {
-    font-size: 30px;
-  }
-
-  .slider {
-    padding-top: 100px;
-    height: calc(100vh - 100px);
-  }
-
-  .contenido {
-    max-width: 80%;
+    font-size: 15.5px;
   }
 }
 
-/* Tablet -> Mobile */
+/* Tablets */
 @media (max-width: 768px) {
- 
-
-    /* Contenedor general de redes: pegado a la izquierda */
-    .redes-sociales-container {
-        top: auto;
-        bottom: 20px;
-        left: 10px;          /* ← totalmente a la izquierda */
-        transform: none;     /* ← evitar centrado */
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 8px;
-    }
-
-    /* Botón desplegable: pegado al lado izquierdo */
-    .redes-toggle {
-        padding: 10px 12px;
-        font-size: 18px;
-        margin: 0;               /* ← evitar que se centre */
-        align-self: flex-start;  /* ← fuerza alineación a la izquierda */
-    }
-
-    /* Menú horizontal */
-    .redes-menu {
-        flex-direction: row;
-        margin: 0;
-        transform: translateY(10px);
-        left: auto;
-    }
-
-    .redes-menu.active {
-        transform: translateY(0);
-    }
-
-    .redes-menu a {
-        padding: 10px 12px;
-        font-size: 20px;
-    }
-
-header {
-    flex-direction: column; /* mantiene el logo y whatsapp en columna */
+  header.navbar {
+    flex-direction: column;
     gap: 12px;
     padding: 12px 0;
   }
 
-  .logo img {
-    width: 90px;
-    border-radius: 50%;
-    border: 2px solid #000000;
-  }
-
-  /* NAVBAR como fila */
   nav ul {
-    flex-direction: row;   /* fila, no columna */
-    flex-wrap: wrap;       /* permite que los enlaces se ajusten al ancho */
-    justify-content: center; /* centra los enlaces */
-    gap: 14px;             /* separación entre enlaces */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 14px;
   }
 
   nav ul li a {
@@ -363,37 +285,82 @@ header {
     gap: 6px;
     font-size: 13px;
   }
-}
-  
 
-
-
-
-/* Pequeñas pantallas */
-@media (max-width: 480px) {
-  .slider {
-    padding-top: 95px;
-    height: calc(100vh - 95px);
+  .slide {
+    padding: 10px 15px;
   }
 
   .contenido {
-    padding: 12px;
+    padding: 10px 15px;
+    max-width: 95%;
+  }
+
+  .contenido h1 {
+    font-size: clamp(1.4rem, 5vw, 3rem);
+  }
+
+  .contenido p {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+  }
+
+  .dot-navigation {
+    bottom: 30px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+  nav ul {
+    gap: 10px;
+  }
+
+  nav ul li a {
+    font-size: 12px;
+    padding: 2px 4px;
+  }
+
+  .whatsapp {
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .contenido h1 {
+    font-size: clamp(1.2rem, 5vw, 2.5rem);
+  }
+
+  .contenido p {
+    font-size: clamp(0.75rem, 3vw, 0.95rem);
   }
 
   .btn {
     padding: 8px 20px;
-    font-size: 0.95rem;
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
   }
 
-  .dot {
-    height: 10px;
-    width: 10px;
+  .dot-navigation {
+    bottom: 20px;
   }
 }
 
-/* Accesibilidad: foco visible */
-:focus {
-  outline: 3px solid rgba(255,77,77,0.5);
-  outline-offset: 2px;
-  border-radius: 6px;
+/* Celulares muy pequeños */
+@media (max-width: 360px) {
+  nav ul {
+    gap: 6px;
+  }
+
+  nav ul li a {
+    font-size: 11px;
+  }
+
+  .whatsapp {
+    font-size: 10px;
+  }
+
+  .contenido h1 {
+    font-size: clamp(1rem, 4vw, 2rem);
+  }
+
+  .contenido p {
+    font-size: clamp(0.7rem, 3vw, 0.9rem);
+  }
 }
