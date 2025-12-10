@@ -1,0 +1,345 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+/* ===== HEADER ===== */
+header {
+    width: 100%;
+    background: linear-gradient(to right, #1c1c1c, #333);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+
+    position: relative; /* Nuevo */
+    z-index: 10;        /* Asegura que esté por encima del video */
+}
+
+.logo img {
+    width: 90px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+}
+
+nav ul {
+    display: flex;
+    gap: 65px;
+    list-style: none;
+    align-items: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 0;
+}
+
+nav ul li a:hover {
+    color: #ff4d4d;
+}
+
+.whatsapp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+}
+
+.whatsapp span {
+    margin: 0 5px;
+}
+
+.whatsapp a {
+  color: #ffffff;
+  font-size: 40px;
+  text-decoration: none;
+
+}
+
+
+.titulo {
+    position: relative; /* Importante */
+    z-index: 2;         /* Mayor que el video (video tiene z-index: 0) */
+    text-align: center;
+    padding: 25px 10px;
+    background: rgba(255, 255, 255, 0.85); /* Fondo semi-transparente para legibilidad */
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+
+
+/* ===== CONTENIDO CONTACTO ===== */
+.contacto {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+
+
+.formulario {
+    width: 380px;
+}
+
+.mapa {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* ===== FORMULARIO ===== */
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border: 1px solid #bbbbbb;
+    border-radius: 5px;
+}
+
+form textarea {
+    height: 120px;
+    resize: none;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #e63939;
+    outline: none;
+}
+
+.check {
+    display: flex;
+    align-items: center; /* Centra verticalmente el texto con el checkbox */
+    font-size: 13px;
+    margin: 10px 0;
+    gap: 5px; /* Ajusta el espacio entre checkbox y texto */
+}
+
+.check input[type="checkbox"] {
+    width: 16px;       /* Tamaño del checkbox */
+    height: 16px;      /* Igual que el ancho para mantener proporción */
+    margin: 0;         /* Quita margen interno que agrega el navegador */
+    flex-shrink: 0;    /* Evita que se reduzca al ajustar espacio */
+}
+
+
+button {
+    width: 100%;
+    background: #2c2c2c;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #000;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #000000;
+    padding: 25px 10px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+footer h4 {
+    margin-bottom: 8px;
+    color: white;
+}
+
+footer p {
+    color: white;
+    font-size: 14px;
+}
+
+.iconos-finales {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.iconos-finales a i {
+    font-size: 25px;
+    color: white;
+    transition: 0.3s;
+}
+
+.iconos-finales a i:hover {
+    color: #ff4d4d;
+}
+
+
+
+
+
+
+
+/* Responsive */
+/* PC grande — no se toca nada */
+@media (max-width: 1200px) {
+  nav ul {
+    gap: 25px;
+  }
+}
+
+/* Laptops */
+@media (max-width: 992px) {
+  nav ul {
+    gap: 20px;
+  }
+  nav ul li a {
+    font-size: 15.5px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+
+  header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .logo img {
+     width: 90px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+  }
+
+  nav ul {
+    flex-direction: row;
+    flex-wrap: nowrap;    /* NO permite columna */
+    gap: 14px;
+  }
+
+  nav ul li a {
+    font-size: 14px;
+  }
+
+  .whatsapp {
+    flex-direction: row;
+    gap: 6px;
+    font-size: 13px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+
+  header {
+    padding: 10px 0;
+  }
+
+  nav ul {
+    gap: 10px;
+  }
+
+  nav ul li a {
+    font-size: 12px;
+    padding: 2px 4px;
+  }
+
+  .logo img {
+     width: 90px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+  }
+
+  .whatsapp {
+    font-size: 11px;
+    gap: 4px;
+  }
+}
+
+/* Celulares muy pequeños */
+@media (max-width: 360px) {
+
+  nav ul {
+    gap: 6px;
+  }
+
+  nav ul li a {
+    font-size: 11px;
+  }
+
+  .logo img {
+     width: 90px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+  }
+
+  .whatsapp {
+    font-size: 10px;
+  }
+}
+/* ===== VIDEO DE FONDO ===== */
+.contacto {
+    position: relative; /* Para que el video absoluto quede dentro */
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+    overflow: hidden; /* Evita que el video sobresalga */
+    min-height: 600px; /* Ajusta según tu contenido */
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cubre todo el contenedor sin deformarse */
+    z-index: 0; /* Por debajo del contenido */
+    filter: brightness(0.5); /* Opcional: oscurece el video para legibilidad */
+}
+
+/* Contenido delante del video */
+.contacto > .ubicacion,
+.contacto > .formulario {
+    position: relative;
+    z-index: 1; /* Por encima del video */
+    background: rgba(255, 255, 255, 0.85); /* Fondo semi-transparente opcional */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Título delante del video */
+.contacto > .titulo {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    padding: 25px 10px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+}
