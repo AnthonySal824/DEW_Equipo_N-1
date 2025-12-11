@@ -61,16 +61,23 @@
         <!-- Formulario -->
         <div class="formulario">
             <h3>Formulario de contacto :</h3>
-            <form>
-                <input type="text" placeholder="Nombre">
-                <input type="text" placeholder="Apellido">
-                <input type="email" placeholder="Correo">
-                <textarea placeholder="Mensaje"></textarea>
-                <label class="check">
-                    <input type="checkbox"> He leído y acepto los términos y condiciones de la política de privacidad vigente.
-                </label>
-                <button type="submit">Enviar</button>
-            </form>
+<form name="contacto" method="POST" data-netlify="true">
+
+    <input type="hidden" name="form-name" value="contacto">
+
+    <input type="text" name="Nombre" placeholder="Nombre" required>
+    <input type="text" name="Apellido" placeholder="Apellido" required>
+    <input type="email" name="Correo" placeholder="Correo" required>
+    <textarea name="Mensaje" placeholder="Mensaje" required></textarea>
+
+    <label class="check">
+        <input type="checkbox" name="Terminos" required> He leído y acepto los términos y condiciones.
+    </label>
+
+    <button type="submit">Enviar</button>
+</form>
+
+
         </div>
     </div>
 </section>
